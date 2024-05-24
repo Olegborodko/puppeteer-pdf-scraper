@@ -25,7 +25,7 @@ node index.js
 
 
 ## Пример
-
+```
 {
   '0': {
     url: 'https://www.tus.si/katalogi/?uid=393',
@@ -43,3 +43,4 @@ node index.js
 
 PDF успешно сохранен: /home/oleg/parser-p/uploads/20240508072707_03_Mojih_10_10.5.-29.6.2024_M3_24_1.pdf
 PDF успешно сохранен: /home/oleg/parser-p/uploads/20240520070320_21_AKCIJSKI_LETAK_22.5.-28.5_GNgVtan.pdf
+```
