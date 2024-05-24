@@ -1,17 +1,19 @@
 const puppeteer = require('puppeteer');
+const savePdf = require('./savePdf');
+
+const url = 'https://www.tus.si/#s2';
+const domCards = "section#s2 div.slick-track li.list-item div.card";
+const domLinkName = "div.hover h3 a";
+const domDate = "p time";
+const domPdf = "figure figcaption a.pdf";
+const destPath = 'uploads';
 
 async function start() {
   const browser = await puppeteer.launch({ headless: true });
 
   const page = await browser.newPage();
-  const url = 'https://www.tus.si/#s2';
 
   await page.goto(url, { waitUntil: 'networkidle2' });
-
-  const domCards = "section#s2 div.slick-track li.list-item div.card";
-  const domLinkName = "div.hover h3 a";
-  const domDate = "p time";
-  const domPdf = "figure figcaption a.pdf";
 
   const results = await page.evaluate((domCards, domLinkName, domDate, domPdf) => {
     const data = {};
@@ -46,6 +48,15 @@ async function start() {
   }, domCards, domLinkName, domDate, domPdf);
 
   console.log(results);
+
+  for (let key of Object.keys(results)) {
+    if (results[key].hasOwnProperty('pdf')) {
+      const pdfLink = results[key]['pdf'];
+
+      await savePdf(pdfLink, destPath);
+    }
+  };
+
   process.exit();
 }
 
