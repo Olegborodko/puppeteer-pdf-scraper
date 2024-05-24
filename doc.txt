@@ -1,0 +1,22 @@
+================= base
+
+section#s2
+div.slick-track 
+li.list-item
+div.card
+
+================== name and link
+
+div.hover
+h3 a href и html
+
+================== time
+
+p
+time datetime первый и второй
+
+=================== pdf
+
+figure
+figcaption
+a.pdf href
